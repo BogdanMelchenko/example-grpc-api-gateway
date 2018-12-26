@@ -1,0 +1,8 @@
+FROM debian:latest
+
+RUN mkdir -p /app
+WORKDIR /app
+
+ADD logic /app/logic
+EXPOSE 9090
+CMD ["./logic"]

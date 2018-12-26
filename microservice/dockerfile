@@ -1,0 +1,8 @@
+FROM debian:latest
+
+RUN mkdir -p /app
+WORKDIR /app
+
+ADD microservice /app/microservice
+EXPOSE 9091
+CMD ["./microservice"]

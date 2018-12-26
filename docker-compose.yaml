@@ -1,0 +1,29 @@
+version: '3.4'
+services:  
+  
+  gw:
+    image: gw:latest
+    environment: 
+    - ENDPOINT_HOST=:8080
+    - LOGIC_ADDRESS=logic:9090  
+    ports:
+    - 8080:8080
+    container_name: gw
+    
+  microservice:
+    image: microservice:latest
+    environment:        
+    - MICROSERVICE_ADDRESS=:9091
+    ports:
+    - 9091:9091
+    container_name: microservice    
+    
+  
+  logic:    
+    container_name: logic
+    environment:
+    - MICROSERVICE_ADDRESS=microservice:9091
+    - LOGIC_ADDRESS=:9090 
+    image: logic:latest
+    ports:
+    - 9090:9090  

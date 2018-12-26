@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package example;
+   
+service MicroService {
+      rpc GetString(MicroMessage) returns (MicroMessage) {    
+  }        
+}
+
+message MicroMessage {
+  string value = 1;
+}
