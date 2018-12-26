@@ -31,6 +31,7 @@ func main() {
 	}
 	defer conn.Close()
 	microclient := microservice.NewMicroServiceClient(conn)
+
 	example := ExampleServer{microclient}
 
 	flag.Parse()
