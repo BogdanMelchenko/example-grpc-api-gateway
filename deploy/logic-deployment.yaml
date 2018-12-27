@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (d48ae64)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: logic
+  name: logic
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: logic
+    spec:
+      containers:
+      - env:
+        - name: LOGIC_ADDRESS
+          value: :9090
+        - name: MICROSERVICE_ADDRESS
+          value: microservice:9091
+        image: logic:latest
+        name: logic
+        ports:
+        - containerPort: 9090
+        resources: {}
+      restartPolicy: Always
+status: {}

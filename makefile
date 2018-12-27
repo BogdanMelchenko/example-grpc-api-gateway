@@ -18,6 +18,13 @@ ifndef $(GOPATH)
     export GOPATH
 endif
 
+
+kuber-up:
+		kompose up
+
+kuber-down:
+		kompose down
+
 protobuf:
 		protoc -I/usr/local/include -I. -I$(GOPATH)src -I$(GOPATH)src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --go_out=plugins=grpc:. proto/logic/example.proto
 		protoc -I/usr/local/include -I. -I$(GOPATH)src -I$(GOPATH)src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=logtostderr=true:. proto/logic/example.proto

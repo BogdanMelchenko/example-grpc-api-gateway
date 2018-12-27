@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (d48ae64)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: microservice
+  name: microservice
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: microservice
+    spec:
+      containers:
+      - env:
+        - name: MICROSERVICE_ADDRESS
+          value: :9091
+        image: microservice:latest
+        name: microservice
+        ports:
+        - containerPort: 9091
+        resources: {}
+      restartPolicy: Always
+status: {}

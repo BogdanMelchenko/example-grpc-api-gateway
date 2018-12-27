@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 (d48ae64)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: gw
+  name: gw
+spec:
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+  selector:
+    io.kompose.service: gw
+status:
+  loadBalancer: {}
